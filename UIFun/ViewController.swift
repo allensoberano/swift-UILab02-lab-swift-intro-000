@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     }
 
     func mixColors(first: String, second: String) -> UIColor {
-        
+
         switch (first, second) {
         case ("Red", "Red"):
             return UIColor.red
@@ -34,14 +34,22 @@ class ViewController: UIViewController {
         default:
             return UIColor.white
         }
-        
+
     }
-    
+
+    @IBOutlet var paintBucket: UIImageView!
+    @IBOutlet var firstColorSegmentedControl: UISegmentedControl!
+    @IBOutlet var secondColorSegmentedControl: UISegmentedControl!
+
     @IBAction func colorSelected(_ sender: UISegmentedControl) {
-        
+
         // TODO: Implement this function according to the instructions.
-        
-        
+        let firstSegment = firstColorSegmentedControl.titleForSegment(at: firstColorSegmentedControl.selectedSegmentIndex)!
+        let secondSegment = secondColorSegmentedControl.titleForSegment(at: secondColorSegmentedControl.selectedSegmentIndex)!
+
+        print("\(firstSegment) \(secondSegment)")
+        paintBucket.backgroundColor =  mixColors(first: firstSegment, second: secondSegment)
+
     }
 
 }
